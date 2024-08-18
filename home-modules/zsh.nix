@@ -82,7 +82,7 @@
 #    ani-cli = "ani-cli-unwrapped --skip";
     tree = "eza -lRT --git --no-permissions --icons=auto --no-filesize --no-time --no-user";
     diary = ".~/scripts/diary";
-    supdate = "sudo nixos-rebuild switch --flake ~/.flake-dots/.#jibriel";
-    stest = "sudo nixos-rebuild test --flake ~/.flake-dots/.#jibriel";
+    rebuild = "sudo nixos-rebuild switch --flake ~/.flake-dots/.#jibriel";
+    rebuild-test = "sudo nixos-rebuild test --flake ~/.flake-dots/.#jibriel";
   };
 }

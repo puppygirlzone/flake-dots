@@ -40,6 +40,8 @@
     yad
     # hello
     vscodium
+    yazi
+    zoxide
     ani-cli
     appimage-run
     atlauncher
