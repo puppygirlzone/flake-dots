@@ -74,13 +74,15 @@
   ];
 
   shellAliases = {
-    ls = "ls -a --color";
-    update = "home-manager switch";
-    test = "home-manager build";
+    ls = "eza -l --git --no-permissions --icons=auto --no-filesize --no-time --no-user";
+    update = "home-manager switch --flake ~/.flake-dots/.#ahlo";
+    test = "home-manager test --flake ~/.flake-dots/.#ahlo";
     nvim = "lvim";
     vim = "lvim";
 #    ani-cli = "ani-cli-unwrapped --skip";
-    tree = "eza -RT";
+    tree = "eza -lRT --git --no-permissions --icons=auto --no-filesize --no-time --no-user";
     diary = ".~/scripts/diary";
+    supdate = "sudo nixos-rebuild switch --flake ~/.flake-dots/.#jibriel";
+    stest = "sudo nixos-rebuild test --flake ~/.flake-dots/.#jibriel";
   };
 }
