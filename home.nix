@@ -165,16 +165,23 @@
   # Picom
 #  picom.override = { withDebug = true; };
 
+  # imports = [
+  #   ./home-modules/zsh.nix
+  #   ./home-modules/tmux.nix
+  #   ./home-modules/alacritty.nix
+  #   ./home-modules/fzf.nix
+  # ];
+
   programs = {
-    zsh = (import ../home-modules/zsh.nix { inherit config pkgs; });
-    tmux = (import ../home-modules/tmux.nix { inherit pkgs; });
-    alacritty = (import ../home-modules/alacritty.nix { inherit config pkgs; });
-    fzf = (import ../home-modules/fzf.nix { inherit pkgs; });
-    # nvim = (import ../home-modules/nvim.nix {inherit pkgs; });
+    zsh = (import ./home-modules/zsh.nix { inherit config pkgs; });
+    tmux = (import ./home-modules/tmux.nix { inherit pkgs; });
+    alacritty = (import ./home-modules/alacritty.nix { inherit config pkgs; });
+    fzf = (import ./home-modules/fzf.nix { inherit pkgs; });
+    # nvim = (import ./home-modules/nvim.nix {inherit pkgs; });
   };
 
   # wayland.windowManager = {
-  #   hyprland = (import ../home-modules/hyprland.nix { inherit pkgs; });
+  #   hyprland = (import ./home-modules/hyprland.nix { inherit pkgs; });
   # };
 #  programs.neovim = {
 #      enable = true;
@@ -183,6 +190,8 @@
 #	nvchad-ui
 #	];
 #  };
+  
+  nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

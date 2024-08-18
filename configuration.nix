@@ -25,7 +25,7 @@
   programs.nix-ld.libraries = with pkgs; [
     # Add shit here.
   ];
-
+  
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -75,7 +75,7 @@
   services.displayManager.sddm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
   services.desktopManager.plasma6.enable = true;
-  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.gnome.seahorse.out}/libexec/seahorse/ssh-askpass";
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.seahorse.out}/libexec/seahorse/ssh-askpass";
   
 
   # Configure keymap in X11
@@ -85,10 +85,10 @@
   };
 
   # Fucking streamdeck
-  programs.streamdeck-ui = {
-    enable = true;
-    autoStart = true; # optional
-  };
+  # programs.streamdeck-ui = {
+  #   enable = true;
+  #   autoStart = true; # optional
+  # };
   
   # Steam things
   programs.steam = {
@@ -147,7 +147,7 @@
   # };
 
   # Enable OpenGL
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
   #  driSupport = true;
   #  driSupport32Bit = true;
@@ -191,5 +191,12 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
+
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
 }

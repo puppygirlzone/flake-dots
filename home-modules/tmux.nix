@@ -35,7 +35,7 @@ in
 {
   enable = true;
 
-  aggressiveResize = true;
+  # aggressiveResize = true;
   baseIndex = 1;
   disableConfirmationPrompt = true;
   keyMode = "vi";
