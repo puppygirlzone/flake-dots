@@ -29,6 +29,7 @@
     zstyle ':fzf-tab:*' switch-group '<' '>'
     path+=('/home/ahlo/.node-global/bin')
     export PATH=/home/$USER/.local/bin:$PATH
+    eval "$(zoxide init zsh)"
   '';
 
 #  antidote.enable = true;
