@@ -86,7 +86,7 @@
     sxiv
     tailscale
     thunderbird
-    transmission-gtk
+    transmission_4-gtk
     vlc
     wget
     wineWowPackages.staging
