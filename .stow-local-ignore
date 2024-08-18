@@ -1,0 +1,7 @@
+/.git
+/.gitignore
+/result
+/home-modules
+.+\.nix
+.+\.lock
+/readme.md
