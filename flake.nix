@@ -18,7 +18,9 @@
     nixosConfigurations = {
       jibriel = lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
+        modules = [ 
+          ./configuration.nix
+        ];
       };
     };
     homeConfigurations = {
