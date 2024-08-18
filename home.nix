@@ -197,15 +197,15 @@
 #  picom.override = { withDebug = true; };
 
   programs = {
-    zsh = (import ./zsh.nix { inherit config pkgs; });
-    tmux = (import ./tmux.nix { inherit pkgs; });
-    alacritty = (import ./alacritty.nix { inherit config pkgs; });
-    fzf = (import ./fzf.nix { inherit pkgs; });
-    # nvim = (import ./nvim.nix {inherit pkgs; });
+    zsh = (import ../home-modules/zsh.nix { inherit config pkgs; });
+    tmux = (import ../home-modules/tmux.nix { inherit pkgs; });
+    alacritty = (import ../home-modules/alacritty.nix { inherit config pkgs; });
+    fzf = (import ../home-modules/fzf.nix { inherit pkgs; });
+    # nvim = (import ../home-modules/nvim.nix {inherit pkgs; });
   };
 
   # wayland.windowManager = {
-  #   hyprland = (import ./hyprland.nix { inherit pkgs; });
+  #   hyprland = (import ../home-modules/hyprland.nix { inherit pkgs; });
   # };
 #  programs.neovim = {
 #      enable = true;
