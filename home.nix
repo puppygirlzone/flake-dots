@@ -22,22 +22,22 @@
     # # "Hello, world!" when run.
     # Hyprland stuff
     ags
-    yad
     cava
     fastfetch
+    kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum
     kitty
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum
+    nwg-look
     rofi-wayland
     swappy
-    swww
     swaynotificationcenter
+    swww
     wallust
-    wlogout
     waybar
-    libsForQt5.qt5ct
-    kdePackages.qt6ct
-    libsForQt5.qtstyleplugin-kvantum
-    kdePackages.qtstyleplugin-kvantum
-    nwg-look
+    wlogout
+    yad
     # hello
     vscodium
     ani-cli
@@ -47,7 +47,6 @@
     blender
     brave
     btop
-    chatterino2
     curl
     discord-canary
     discordo
@@ -60,7 +59,6 @@
     ivpn
     lazygit
     lunarvim
-    modrinth-app
     mov-cli
     mpv
     mumble
@@ -81,21 +79,15 @@
     python312Packages.devgoldyutils
     python312Packages.pip
     qemu
-    qtemu
     qutebrowser
-    ragnarwm
-    simplex-chat-desktop
     slack
     steam
     stow
     sxiv
     tailscale
-    texmaker
     thunderbird
     transmission-gtk
     vlc
-    warp-terminal
-    webcord-vencord
     wget
     wineWowPackages.staging
     winetricks
@@ -108,7 +100,6 @@
     zulu17
     # KDE Packages
     kdePackages.qtmultimedia
-    # Fuck you Lunarvim I'll add it myself
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -162,7 +153,7 @@
   #  /etc/profiles/per-user/ahlo/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+     EDITOR = "lvim";
   };
 
   programs.git = {
@@ -170,28 +161,6 @@
   userName = "ItsNotAhlo";
   userEmail = "153831898+ItsNotAhlo@users.noreply.github.com";
   };
-
-#  programs.zsh = {
-#  enable = true;
-#  enableCompletion = false;
-#  autosuggestion.enable = true;
-#  syntaxHighlighting.enable = true;
-#  antidote.enable = true;
-#
-#  antidote.plugins = [
-#  "hlissner/zsh-autopair"
-#  "marlonrichert/zsh-autocomplete"
-#  ];
-#
-#  shellAliases = {
-#    ls = "ls -a";
-#    update = "home-manager switch";
-#    nvim = "lvim";
-#    vim = "lvim";
-#    test = "home-manager build";
-#    ani-cli = "ani-cli-unwrapped --skip";
-#    };
-#  };
 
   # Picom
 #  picom.override = { withDebug = true; };
