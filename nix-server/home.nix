@@ -20,90 +20,31 @@
   home.packages = with pkgs; [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    # Hyprland stuff
-    ags
-    cava
-    fastfetch
-    kdePackages.qt6ct
-    kdePackages.qtstyleplugin-kvantum
-    kitty
-    libsForQt5.qt5ct
-    libsForQt5.qtstyleplugin-kvantum
-    nwg-look
-    rofi-wayland
-    swappy
-    swaynotificationcenter
-    swww
-    wallust
-    waybar
-    wlogout
-    yad
     
-    # Programs
-    ani-cli
+    # Docker stuff
+    docker
+    docker-compose
+    lazydocker
+    # Security
+    crowdsec
+    # Programs I use
+    yazi
+    zoxide
     appimage-run
-    atlauncher
-    bitwarden-desktop
-    blender
-    brave
     btop
     curl
-    discord-canary
-    discordo
     eza
-    fh
-    flameshot
-    gimp
-    godot3
-    helvum
-    hidapi
-    ivpn
     lazygit
     lunarvim
-    mov-cli
-    mpv
-    mumble
     nerdfonts
-    newsboat
-    nodePackages_latest.create-react-native-app
     nodejs_22
-    nvfancontrol
-    obs-studio
-    obsidian
-    osu-lazer-bin
+    nodePackages_latest.create-react-native-app
     p7zip
-    picom-pijulius
-    pipewire
-    prismlauncher
-    protonup-qt
     python3
     python312Packages.devgoldyutils
     python312Packages.pip
-    qemu
-    qutebrowser
-    slack
-    steam
     stow
-    sxiv
-    tailscale
-    thunderbird
-    transmission_4-gtk
-    vlc
-    vscodium
     wget
-    wineWowPackages.staging
-    winetricks
-    wofi
-    xfce.thunar
-    xorg.xinit
-    yazi
-    youtube-music
-    yt-dlp
-    zathura
-    zoxide
-    zulu17
-    # KDE Packages
-    kdePackages.qtmultimedia
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -118,12 +59,6 @@
     # '')
   ];
 
-  # Picom?
-#  services.picom.enable = true;
-
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  xdg.portal.config.common.default = "*";
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -132,6 +67,10 @@
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
     # ".screenrc".source = dotfiles/screenrc;
+    
+    ".ssh/authorized_keys" = ''
+      ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6CKDT2NK0zjmHFeoyZKTVZK1M7aNUWxKILZoeRLvlb main-pc
+    '';
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
@@ -166,35 +105,13 @@
   userEmail = "153831898+ItsNotAhlo@users.noreply.github.com";
   };
 
-  # Picom
-#  picom.override = { withDebug = true; };
-
-  # imports = [
-  #   ./home-modules/zsh.nix
-  #   ./home-modules/tmux.nix
-  #   ./home-modules/alacritty.nix
-  #   ./home-modules/fzf.nix
-  # ];
 
   programs = {
     zsh = (import ./home-modules/zsh.nix { inherit config pkgs; });
     tmux = (import ./home-modules/tmux.nix { inherit pkgs; });
-    alacritty = (import ./home-modules/alacritty.nix { inherit config pkgs; });
     fzf = (import ./home-modules/fzf.nix { inherit pkgs; });
-    # nvim = (import ./home-modules/nvim.nix {inherit pkgs; });
   };
-
-  # wayland.windowManager = {
-  #   hyprland = (import ./home-modules/hyprland.nix { inherit pkgs; });
-  # };
-#  programs.neovim = {
-#      enable = true;
-#      plugins = with pkgs.vimPlugins; [
-#        nvchad
-#	nvchad-ui
-#	];
-#  };
-  
+ 
   nixpkgs.config.allowUnfree = true;
 
   # Let Home Manager install and manage itself.
