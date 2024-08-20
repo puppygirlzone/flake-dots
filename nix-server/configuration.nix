@@ -2,16 +2,19 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, modulesPath, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      (modulesPath + "/virtualisation/proxmox-lxc.nix")
     ];
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
+
+  security.sudo.wheelNeedsPassword = false;
 
   networking.hostName = "nixos"; # Define your hostname.
   networking.hostId = "12345678";
@@ -59,6 +62,9 @@
     packages = with pkgs; [
     #  thunderbird
     ];
+    openssh.authorizedKeys.keys = [
+     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIM6CKDT2NK0zjmHFeoyZKTVZK1M7aNUWxKILZoeRLvlb main-pc"
+    ];
   };
 
   # Allow unfree packages
@@ -70,6 +76,7 @@
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     git
+    binutils
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -105,5 +112,11 @@
       experimental-features = nix-command flakes
     '';
   };
-
+  
+  # Supress systemd units that don't work because of LXC
+  systemd.suppressedSystemUnits = [
+    "dev-mqueue.mount"
+    "sys-kernel-debug.mount"
+    "sys-fs-fuse-connections.mount"
+  ];
 }
