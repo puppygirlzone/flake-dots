@@ -9,23 +9,12 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  # # Flakes?
-  # nix = {
-  #   package = pkgs.nix;
-  #   settings.experimental-features = [ "nix-command" "flakes" ];
-  # };
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   services.flatpak.enable = true;
 
-  # Fuck it I want osu
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    # Add shit here.
-  ];
-  
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -142,10 +131,10 @@
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # Enable OpenGL
   hardware.graphics = {
