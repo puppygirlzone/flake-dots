@@ -14,6 +14,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
+  networking.hostId = "12345678";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -58,7 +59,6 @@
     packages = with pkgs; [
     #  thunderbird
     ];
-    defaultUserShell = "pkgs.zsh";
   };
 
   # Allow unfree packages
