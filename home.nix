@@ -39,22 +39,25 @@
     wlogout
     yad
     
+    # Game Stuff
+    unityhub
+    godot3
+    blender
+    vrc-get
+
     # Programs
     ani-cli
     appimage-run
     atlauncher
     bitwarden-desktop
-    blender
     brave
     btop
     curl
     discord-canary
     discordo
     eza
-    fh
     flameshot
     gimp
-    godot3
     helvum
     hidapi
     ivpn
@@ -121,9 +124,12 @@
   # Picom?
 #  services.picom.enable = true;
 
-  xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  xdg.portal.config.common.default = "*";
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
+    xdgOpenUsePortal = true;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

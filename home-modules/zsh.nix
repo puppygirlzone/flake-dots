@@ -30,6 +30,16 @@
     path+=('/home/ahlo/.node-global/bin')
     export PATH=/home/$USER/.local/bin:$PATH
     eval "$(zoxide init zsh)"
+
+    # Yazi cd
+    function yy() {
+      local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+      yazi "$@" --cwd-file="$tmp"
+      if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+        builtin cd -- "$cwd"
+      fi
+      rm -f -- "$tmp"
+    }
   '';
 
 #  antidote.enable = true;
