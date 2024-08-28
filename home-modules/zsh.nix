@@ -28,6 +28,7 @@
     # switch group using `<` and `>`
     zstyle ':fzf-tab:*' switch-group '<' '>'
     path+=('/home/ahlo/.node-global/bin')
+    path+=('/home/ahlo/.wine')
     export PATH=/home/$USER/.local/bin:$PATH
     eval "$(zoxide init zsh)"
 

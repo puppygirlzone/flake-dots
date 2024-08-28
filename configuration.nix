@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs,  inputs, ... }:
 
 {
   imports =
@@ -12,7 +12,8 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
+  # boot.kernelPatches = vivepro2-linux-drivers.kernelPatches;
+  
   services.flatpak.enable = true;
 
   programs.hyprland = {
@@ -81,6 +82,7 @@
   
   # Steam things
   programs.steam = {
+    enable = true;
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
@@ -139,9 +141,11 @@
   # Enable OpenGL
   hardware.graphics = {
     enable = true;
-  #  driSupport = true;
-  #  driSupport32Bit = true;
+   # driSupport = true;
+   # driSupport32Bit = true;
   };
+
+  hardware.steam-hardware.enable = true;
 
   services.xserver.videoDrivers = ["nvidia"];
 
@@ -161,7 +165,6 @@
     # The fucking package to use
     package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
-
 
   # List services that you want to enable:
 

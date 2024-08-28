@@ -40,15 +40,18 @@
     yad
     
     # Game Stuff
-    unityhub
     godot3
     blender
-    vrc-get
+    protonup-qt
+
+    # Games
+    prismlauncher
+    atlauncher
+    osu-lazer-bin
 
     # Programs
     ani-cli
     appimage-run
-    atlauncher
     bitwarden-desktop
     brave
     btop
@@ -73,24 +76,22 @@
     nvfancontrol
     obs-studio
     obsidian
-    osu-lazer-bin
     p7zip
     picom-pijulius
     pipewire
-    prismlauncher
-    protonup-qt
     python3
     python312Packages.devgoldyutils
     python312Packages.pip
     qemu
     qutebrowser
     slack
-    steam
     stow
     sxiv
     tailscale
     thunderbird
     transmission_4-gtk
+    usbutils
+    vesktop
     vlc
     vscodium
     wget
@@ -98,6 +99,7 @@
     winetricks
     wofi
     xfce.thunar
+    xfce.tumbler
     xorg.xinit
     yazi
     youtube-music
