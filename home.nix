@@ -75,7 +75,6 @@
     nodejs_22
     nvfancontrol
     obs-studio
-    obsidian
     p7zip
     picom-pijulius
     pipewire
