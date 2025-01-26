@@ -1,40 +1,32 @@
 {
-
-  description = "My first flake";
-
-
   inputs = {
-    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ...} @ inputs:
-  let
-    lib = nixpkgs.lib;
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
-    pkgs = import nixpkgs {
-	config.allowUnfree = true;
-	system = "x86_64-linux";
-    };
   in {
     nixosConfigurations = {
-      jibriel = lib.nixosSystem {
-        inherit system;
-        modules = [ 
-          ./configuration.nix
+      desktop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./config
         ];
-        specialArgs = {
-          inherit inputs;
-        };
-      };
-    };
-    homeConfigurations = {
-      ahlo = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home.nix ];
       };
     };
   };
-
 }
