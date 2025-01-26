@@ -13,7 +13,10 @@
   let
     lib = nixpkgs.lib;
     system = "x86_64-linux";
-    pkgs = nixpkgs.legacyPackages.${system};
+    pkgs = import nixpkgs {
+	config.allowUnfree = true;
+	system = "x86_64-linux";
+    };
   in {
     nixosConfigurations = {
       jibriel = lib.nixosSystem {
